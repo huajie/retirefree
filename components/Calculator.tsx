@@ -1,13 +1,19 @@
 'use client'
 
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
+import { useRouter } from 'next/navigation'
 import { Button } from '@/components/ui/Button'
 import { Input } from '@/components/ui/Input'
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/Card'
 import { calculatorSchema, type CalculatorInput } from '@/lib/utils/validations'
 import type { AIResponse } from '@/types'
+import { createClient } from '@/lib/supabase/client'
 
 export function Calculator() {
+  const router = useRouter()
+  const supabase = createClient()
+  const [user, setUser] = useState<any>(null)
+
   const [formData, setFormData] = useState<CalculatorInput>({
     currentAge: 67,
     savingsAmount: 600000,
@@ -18,6 +24,22 @@ export function Calculator() {
   const [errors, setErrors] = useState<Record<string, string>>({})
   const [isLoading, setIsLoading] = useState(false)
   const [result, setResult] = useState<AIResponse | null>(null)
+
+  // Check if user is logged in
+  useEffect(() => {
+    const checkUser = async () => {
+      const { data: { user } } = await supabase.auth.getUser()
+      setUser(user)
+    }
+    checkUser()
+
+    // Listen for auth changes
+    const { data: { subscription } } = supabase.auth.onAuthStateChange((_event, session) => {
+      setUser(session?.user ?? null)
+    })
+
+    return () => subscription.unsubscribe()
+  }, [])
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
@@ -56,6 +78,33 @@ export function Calculator() {
 
       if (data.success && data.data) {
         setResult(data.data)
+
+        // Save to database if user is logged in
+        if (user) {
+          try {
+            const { error: dbError } = await supabase
+              .from('calculations')
+              .insert({
+                user_id: user.id,
+                age: formData.currentAge,
+                savings: formData.savingsAmount,
+                monthly_expenses: formData.monthlyExpenses,
+                risk_tolerance: formData.riskTolerance,
+                withdrawal_amount: data.data.withdrawalAmount,
+                ai_advice: data.data.advice,
+                ai_reasoning: data.data.reasoning,
+                ai_provider: data.data.provider || 'deepseek',
+                confidence: data.data.confidence,
+              })
+
+            if (dbError) {
+              console.error('Failed to save calculation:', dbError)
+              // Don't show error to user, just log it
+            }
+          } catch (saveError) {
+            console.error('Error saving calculation:', saveError)
+          }
+        }
       } else {
         throw new Error(data.error || 'Unexpected response format')
       }
@@ -195,16 +244,50 @@ export function Calculator() {
               </p>
             </div>
 
-            <div className="pt-6 border-t border-[#93C5FD]">
-              <div className="text-center">
-                <p className="text-[#4B5563] mb-4">
-                  Want personalized recommendations that adapt to market changes?
-                </p>
-                <Button size="lg" className="w-full md:w-auto">
-                  Start Your Free 7-Day Trial
-                </Button>
+            {!user && (
+              <div className="pt-6 border-t border-[#93C5FD]">
+                <div className="text-center">
+                  <p className="text-[#4B5563] mb-4">
+                    Want to save your calculations and get personalized recommendations?
+                  </p>
+                  <div className="flex flex-col sm:flex-row gap-3 justify-center">
+                    <Button
+                      size="lg"
+                      className="w-full sm:w-auto"
+                      onClick={() => router.push('/auth/signup')}
+                    >
+                      Start Your Free 7-Day Trial
+                    </Button>
+                    <Button
+                      variant="secondary"
+                      size="lg"
+                      className="w-full sm:w-auto"
+                      onClick={() => router.push('/auth/login')}
+                    >
+                      Log In
+                    </Button>
+                  </div>
+                </div>
               </div>
-            </div>
+            )}
+
+            {user && (
+              <div className="pt-6 border-t border-[#93C5FD]">
+                <div className="text-center">
+                  <p className="text-[#059669] font-semibold mb-2">
+                    ✓ Calculation saved to your dashboard
+                  </p>
+                  <Button
+                    variant="secondary"
+                    size="lg"
+                    className="w-full md:w-auto"
+                    onClick={() => router.push('/dashboard')}
+                  >
+                    View All Calculations
+                  </Button>
+                </div>
+              </div>
+            )}
           </CardContent>
         </Card>
       )}
