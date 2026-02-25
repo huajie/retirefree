@@ -10,6 +10,7 @@ export function Header() {
   const pathname = usePathname()
   const supabase = createClient()
   const [user, setUser] = useState<any>(null)
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
 
   useEffect(() => {
     const checkUser = async () => {
@@ -35,9 +36,10 @@ export function Header() {
             <div className="w-8 h-8 bg-[#2563EB] rounded-lg flex items-center justify-center">
               <span className="text-white font-bold text-xl">R</span>
             </div>
-            <span className="text-xl font-bold text-[#1E3A8A]">RetireFree</span>
+            <span className="text-lg sm:text-xl font-bold text-[#1E3A8A]">RetireFree</span>
           </Link>
 
+          {/* Desktop Navigation */}
           <nav className="hidden md:flex items-center gap-8">
             {isHomePage ? (
               <>
@@ -63,7 +65,8 @@ export function Header() {
             )}
           </nav>
 
-          <div className="flex items-center gap-4">
+          {/* Desktop Auth Buttons */}
+          <div className="hidden md:flex items-center gap-4">
             {user ? (
               <Link href="/dashboard">
                 <Button size="sm">
@@ -79,13 +82,108 @@ export function Header() {
                 </Link>
                 <Link href={isHomePage ? "#calculator" : "/auth/signup"}>
                   <Button size="sm">
-                    {isHomePage ? "Try Free Calculator" : "Sign Up"}
+                    {isHomePage ? "Try Free" : "Sign Up"}
                   </Button>
                 </Link>
               </>
             )}
           </div>
+
+          {/* Mobile Menu Button */}
+          <button
+            onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+            className="md:hidden p-2 text-[#4B5563] hover:text-[#2563EB] focus:outline-none focus:ring-2 focus:ring-[#2563EB] rounded-md"
+            aria-label="Toggle menu"
+          >
+            <svg
+              className="w-6 h-6"
+              fill="none"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              strokeWidth="2"
+              viewBox="0 0 24 24"
+              stroke="currentColor"
+            >
+              {mobileMenuOpen ? (
+                <path d="M6 18L18 6M6 6l12 12" />
+              ) : (
+                <path d="M4 6h16M4 12h16M4 18h16" />
+              )}
+            </svg>
+          </button>
         </div>
+
+        {/* Mobile Menu */}
+        {mobileMenuOpen && (
+          <div className="md:hidden py-4 border-t border-[#E5E7EB]">
+            <nav className="flex flex-col space-y-3">
+              {isHomePage ? (
+                <>
+                  <Link
+                    href="#features"
+                    className="text-[#4B5563] hover:text-[#2563EB] transition-colors px-2 py-1"
+                    onClick={() => setMobileMenuOpen(false)}
+                  >
+                    Features
+                  </Link>
+                  <Link
+                    href="#pricing"
+                    className="text-[#4B5563] hover:text-[#2563EB] transition-colors px-2 py-1"
+                    onClick={() => setMobileMenuOpen(false)}
+                  >
+                    Pricing
+                  </Link>
+                  <Link
+                    href="#faq"
+                    className="text-[#4B5563] hover:text-[#2563EB] transition-colors px-2 py-1"
+                    onClick={() => setMobileMenuOpen(false)}
+                  >
+                    FAQ
+                  </Link>
+                </>
+              ) : (
+                <>
+                  <Link
+                    href="/#calculator"
+                    className="text-[#4B5563] hover:text-[#2563EB] transition-colors px-2 py-1"
+                    onClick={() => setMobileMenuOpen(false)}
+                  >
+                    Calculator
+                  </Link>
+                  <Link
+                    href="/pricing"
+                    className="text-[#4B5563] hover:text-[#2563EB] transition-colors px-2 py-1"
+                    onClick={() => setMobileMenuOpen(false)}
+                  >
+                    Pricing
+                  </Link>
+                </>
+              )}
+              <div className="border-t border-[#E5E7EB] pt-3 mt-2 space-y-2">
+                {user ? (
+                  <Link href="/dashboard" onClick={() => setMobileMenuOpen(false)}>
+                    <Button size="sm" className="w-full">
+                      Dashboard
+                    </Button>
+                  </Link>
+                ) : (
+                  <>
+                    <Link href="/auth/login" onClick={() => setMobileMenuOpen(false)}>
+                      <Button variant="secondary" size="sm" className="w-full">
+                        Log In
+                      </Button>
+                    </Link>
+                    <Link href={isHomePage ? "#calculator" : "/auth/signup"} onClick={() => setMobileMenuOpen(false)}>
+                      <Button size="sm" className="w-full">
+                        {isHomePage ? "Try Free Calculator" : "Sign Up"}
+                      </Button>
+                    </Link>
+                  </>
+                )}
+              </div>
+            </nav>
+          </div>
+        )}
       </div>
     </header>
   )
