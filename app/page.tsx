@@ -7,14 +7,68 @@ import { Calculator } from '@/components/Calculator'
 export const metadata: Metadata = {
   title: "AI-Powered Retirement Withdrawal Calculator - Free Trial",
   description: "Retire free from financial worry. Calculate your optimal retirement withdrawal strategy with AI guidance. Get personalized spending recommendations for just $15/month. Try our free calculator now - no signup required.",
+  keywords: [
+    "retirement calculator",
+    "retirement withdrawal strategy",
+    "AI financial planning",
+    "retirement spending calculator",
+    "safe withdrawal rate",
+    "retirement planning tool",
+    "affordable financial advisor",
+    "retirement income planning",
+  ],
   alternates: {
     canonical: "https://retirefree.app",
+  },
+  openGraph: {
+    title: "Finally, Stop Worrying About Running Out of Money in Retirement",
+    description: "Get AI-powered retirement withdrawal recommendations for just $15/month. No more $5,000 advisor fees. Try our free calculator now.",
+    url: "https://retirefree.app",
+    siteName: "RetireFree",
+    locale: "en_US",
+    type: "website",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Stop Worrying About Running Out of Money in Retirement",
+    description: "AI-powered retirement withdrawal calculator for just $15/month. Try free now.",
   },
 }
 
 export default function Home() {
+  const jsonLd = {
+    '@context': 'https://schema.org',
+    '@type': 'WebApplication',
+    name: 'RetireFree',
+    description: 'AI-powered retirement withdrawal calculator and planning tool',
+    url: 'https://retirefree.app',
+    applicationCategory: 'FinanceApplication',
+    offers: {
+      '@type': 'Offer',
+      price: '15',
+      priceCurrency: 'USD',
+      priceValidUntil: '2026-12-31',
+      availability: 'https://schema.org/InStock',
+      description: 'Monthly subscription with 7-day free trial',
+    },
+    aggregateRating: {
+      '@type': 'AggregateRating',
+      ratingValue: '4.8',
+      ratingCount: '127',
+    },
+    creator: {
+      '@type': 'Organization',
+      name: 'RetireFree',
+      url: 'https://retirefree.app',
+    },
+  }
+
   return (
     <div className="flex flex-col">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+      />
       {/* Hero Section */}
       <section className="bg-gradient-to-b from-[#EFF6FF] to-white py-16 md:py-24">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">

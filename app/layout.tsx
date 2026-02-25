@@ -26,20 +26,11 @@ export const metadata: Metadata = {
     siteName: "RetireFree",
     locale: "en_US",
     type: "website",
-    images: [
-      {
-        url: "/og-image.png",
-        width: 1200,
-        height: 630,
-        alt: "RetireFree - AI-Powered Retirement Planning",
-      },
-    ],
   },
   twitter: {
     card: "summary_large_image",
     title: "RetireFree - AI-Powered Retirement Withdrawal Calculator",
     description: "Calculate your optimal retirement withdrawal strategy with AI for just $15/month.",
-    images: ["/og-image.png"],
   },
   robots: {
     index: true,

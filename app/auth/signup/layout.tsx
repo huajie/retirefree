@@ -6,6 +6,10 @@ export const metadata: Metadata = {
   alternates: {
     canonical: "https://retirefree.app/auth/signup",
   },
+  robots: {
+    index: false,
+    follow: true,
+  },
 }
 
 export default function SignupLayout({
