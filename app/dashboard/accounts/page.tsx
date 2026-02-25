@@ -56,7 +56,7 @@ export default async function AccountsPage() {
   // Get unique items for display
   const uniqueItems = accounts?.reduce((acc, account) => {
     const itemId = account.plaid_items?.id
-    if (itemId && !acc.find((item) => item.id === itemId)) {
+    if (itemId && !acc.find((item: { id: string; institution_name: string }) => item.id === itemId)) {
       acc.push({
         id: itemId,
         institution_name: account.plaid_items?.institution_name || 'Unknown',

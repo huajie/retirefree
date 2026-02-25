@@ -2,6 +2,7 @@ import { NextRequest, NextResponse } from 'next/server'
 import { createClient } from '@/lib/supabase/server'
 import { plaidClient } from '@/lib/plaid/config'
 import { savePlaidItem, saveFinancialAccounts } from '@/lib/plaid/service'
+import { CountryCode } from 'plaid'
 
 /**
  * POST /api/plaid/exchange-public-token
@@ -52,7 +53,7 @@ export async function POST(req: NextRequest) {
       if (institutionId) {
         const institutionResponse = await plaidClient.institutionsGetById({
           institution_id: institutionId,
-          country_codes: ['US'],
+          country_codes: [CountryCode.Us],
         })
         institutionName = institutionResponse.data.institution.name
       }
