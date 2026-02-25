@@ -196,10 +196,15 @@ export function DashboardClient({ user, calculations, subscription }: DashboardC
         </Card>
 
         {/* Quick Actions */}
-        <div className="mb-8">
+        <div className="mb-8 flex flex-col sm:flex-row gap-3">
           <Link href="/#calculator">
             <Button size="lg" className="w-full sm:w-auto">
               Run a New Calculation
+            </Button>
+          </Link>
+          <Link href="/dashboard/accounts">
+            <Button size="lg" variant="secondary" className="w-full sm:w-auto">
+              My Accounts
             </Button>
           </Link>
         </div>

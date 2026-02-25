@@ -58,6 +58,11 @@ export function Header() {
                 <Link href="/#calculator" className="text-[#4B5563] hover:text-[#2563EB] transition-colors">
                   Calculator
                 </Link>
+                {user && (
+                  <Link href="/dashboard/accounts" className="text-[#4B5563] hover:text-[#2563EB] transition-colors">
+                    Accounts
+                  </Link>
+                )}
                 <Link href="/pricing" className="text-[#4B5563] hover:text-[#2563EB] transition-colors">
                   Pricing
                 </Link>
@@ -150,6 +155,15 @@ export function Header() {
                   >
                     Calculator
                   </Link>
+                  {user && (
+                    <Link
+                      href="/dashboard/accounts"
+                      className="text-[#4B5563] hover:text-[#2563EB] transition-colors px-2 py-1"
+                      onClick={() => setMobileMenuOpen(false)}
+                    >
+                      Accounts
+                    </Link>
+                  )}
                   <Link
                     href="/pricing"
                     className="text-[#4B5563] hover:text-[#2563EB] transition-colors px-2 py-1"

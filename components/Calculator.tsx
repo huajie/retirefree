@@ -13,6 +13,8 @@ export function Calculator() {
   const router = useRouter()
   const supabase = createClient()
   const [user, setUser] = useState<any>(null)
+  const [connectedAccountsBalance, setConnectedAccountsBalance] = useState<number | null>(null)
+  const [loadingAccounts, setLoadingAccounts] = useState(false)
 
   const [formData, setFormData] = useState<CalculatorInput>({
     currentAge: 67,
@@ -25,11 +27,41 @@ export function Calculator() {
   const [isLoading, setIsLoading] = useState(false)
   const [result, setResult] = useState<AIResponse | null>(null)
 
-  // Check if user is logged in
+  // Check if user is logged in and fetch connected accounts
   useEffect(() => {
     const checkUser = async () => {
       const { data: { user } } = await supabase.auth.getUser()
       setUser(user)
+
+      // If user is logged in, fetch their connected investment accounts
+      if (user) {
+        setLoadingAccounts(true)
+        try {
+          const { data: accounts, error } = await supabase
+            .from('financial_accounts')
+            .select('current_balance, account_type')
+            .eq('user_id', user.id)
+
+          if (!error && accounts && accounts.length > 0) {
+            // Calculate total from investment accounts
+            const investmentTotal = accounts
+              .filter((account) => account.account_type === 'investment')
+              .reduce((sum, account) => sum + (Number(account.current_balance) || 0), 0)
+
+            if (investmentTotal > 0) {
+              setConnectedAccountsBalance(investmentTotal)
+              // Auto-fill savings amount if it's the default value
+              if (formData.savingsAmount === 600000) {
+                setFormData(prev => ({ ...prev, savingsAmount: Math.round(investmentTotal) }))
+              }
+            }
+          }
+        } catch (error) {
+          console.error('Error fetching accounts:', error)
+        } finally {
+          setLoadingAccounts(false)
+        }
+      }
     }
     checkUser()
 
@@ -156,16 +188,34 @@ export function Calculator() {
                 max={100}
               />
 
-              <Input
-                type="number"
-                label="Total Retirement Savings ($)"
-                value={formData.savingsAmount}
-                onChange={(e) => setFormData({ ...formData, savingsAmount: Number(e.target.value) })}
-                error={errors.savingsAmount}
-                helperText="Include all retirement accounts"
-                min={1000}
-                step={1000}
-              />
+              <div>
+                <Input
+                  type="number"
+                  label="Total Retirement Savings ($)"
+                  value={formData.savingsAmount}
+                  onChange={(e) => setFormData({ ...formData, savingsAmount: Number(e.target.value) })}
+                  error={errors.savingsAmount}
+                  helperText={
+                    connectedAccountsBalance
+                      ? `Auto-filled from ${formatCurrency(connectedAccountsBalance)} in connected accounts`
+                      : "Include all retirement accounts"
+                  }
+                  min={1000}
+                  step={1000}
+                />
+                {user && !connectedAccountsBalance && !loadingAccounts && (
+                  <p className="mt-2 text-sm text-blue-600">
+                    <button
+                      type="button"
+                      onClick={() => router.push('/dashboard/accounts')}
+                      className="underline hover:text-blue-800"
+                    >
+                      Connect your accounts
+                    </button>
+                    {' '}to auto-fill this field
+                  </p>
+                )}
+              </div>
 
               <Input
                 type="number"
