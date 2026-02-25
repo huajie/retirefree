@@ -60,7 +60,7 @@ export default function SignupPage() {
         // Check if email confirmation is required
         if (data.user.identities && data.user.identities.length === 0) {
           setErrors({
-            submit: 'This email is already registered. Please log in instead.',
+            submit: 'Looks like you already have an account. Try logging in instead.',
           })
         } else if (data.user.confirmed_at) {
           // User is confirmed, redirect to dashboard
@@ -69,7 +69,7 @@ export default function SignupPage() {
         } else {
           // Email confirmation required
           setSuccessMessage(
-            'Account created! Please check your email to confirm your account before logging in.'
+            'Nice! Check your email for a confirmation link. (Check spam if you don\'t see it.)'
           )
         }
       }
@@ -88,10 +88,10 @@ export default function SignupPage() {
       <div className="max-w-md mx-auto">
         <div className="text-center mb-8">
           <h1 className="text-4xl font-bold text-[#1E3A8A] mb-2">
-            Create Your Account
+            Let's Get You Started
           </h1>
           <p className="text-[#4B5563]">
-            Start your 7-day free trial today. No credit card required.
+            7-day free trial. No credit card. No BS.
           </p>
         </div>
 

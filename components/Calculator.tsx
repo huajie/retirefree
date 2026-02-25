@@ -192,7 +192,7 @@ export function Calculator() {
                   <option value="high">Aggressive (High)</option>
                 </select>
                 <p className="mt-2 text-sm text-[#6B7280]">
-                  How comfortable are you with market fluctuations?
+                  How do you feel when the market dips?
                 </p>
               </div>
             </div>
@@ -207,7 +207,7 @@ export function Calculator() {
             )}
 
             <Button type="submit" size="lg" className="w-full" isLoading={isLoading}>
-              Calculate My Safe Withdrawal
+              Show Me the Numbers
             </Button>
           </form>
         </CardContent>
@@ -217,7 +217,7 @@ export function Calculator() {
         <Card variant="result">
           <CardHeader>
             <CardTitle className="text-center text-4xl mb-4">
-              Safe Monthly Withdrawal
+              You Can Safely Spend
             </CardTitle>
             <div className="text-center">
               <div className="text-5xl md:text-6xl font-bold text-[#2563EB] mb-2">
@@ -248,7 +248,7 @@ export function Calculator() {
               <div className="pt-6 border-t border-[#93C5FD]">
                 <div className="text-center">
                   <p className="text-[#4B5563] mb-4">
-                    Want to save your calculations and get personalized recommendations?
+                    Like what you see? Save this and get updates every month.
                   </p>
                   <div className="flex flex-col sm:flex-row gap-3 justify-center">
                     <Button
@@ -275,7 +275,7 @@ export function Calculator() {
               <div className="pt-6 border-t border-[#93C5FD]">
                 <div className="text-center">
                   <p className="text-[#059669] font-semibold mb-2">
-                    ✓ Calculation saved to your dashboard
+                    ✓ Saved! Check your dashboard anytime.
                   </p>
                   <Button
                     variant="secondary"
@@ -283,7 +283,7 @@ export function Calculator() {
                     className="w-full md:w-auto"
                     onClick={() => router.push('/dashboard')}
                   >
-                    View All Calculations
+                    Go to Dashboard
                   </Button>
                 </div>
               </div>

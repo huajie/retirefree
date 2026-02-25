@@ -139,7 +139,7 @@ export function DashboardClient({ user, calculations, subscription }: DashboardC
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6">
           <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4">
             <div>
-              <h1 className="text-3xl font-bold text-[#1E3A8A]">Your Dashboard</h1>
+              <h1 className="text-3xl font-bold text-[#1E3A8A]">Hey there! 👋</h1>
               <p className="text-[#6B7280] mt-1">{user.email}</p>
             </div>
             <div className="flex gap-3">
@@ -179,7 +179,7 @@ export function DashboardClient({ user, calculations, subscription }: DashboardC
               </div>
               {!subscription || subscription.status !== 'active' ? (
                 <Link href="/pricing">
-                  <Button size="lg">Start Your Free Trial</Button>
+                  <Button size="lg">Get Full Access</Button>
                 </Link>
               ) : (
                 <Button
@@ -188,7 +188,7 @@ export function DashboardClient({ user, calculations, subscription }: DashboardC
                   onClick={handleManageSubscription}
                   isLoading={isLoadingPortal}
                 >
-                  Manage Subscription
+                  Manage Billing
                 </Button>
               )}
             </div>
@@ -199,7 +199,7 @@ export function DashboardClient({ user, calculations, subscription }: DashboardC
         <div className="mb-8">
           <Link href="/#calculator">
             <Button size="lg" className="w-full sm:w-auto">
-              Calculate New Withdrawal Amount
+              Run a New Calculation
             </Button>
           </Link>
         </div>
@@ -207,17 +207,17 @@ export function DashboardClient({ user, calculations, subscription }: DashboardC
         {/* Calculations History */}
         <div>
           <h2 className="text-2xl font-bold text-[#1E3A8A] mb-4">
-            Your Calculation History
+            Your Numbers
           </h2>
 
           {calculations.length === 0 ? (
             <Card>
               <CardContent className="py-12 text-center">
                 <p className="text-[#6B7280] text-lg mb-6">
-                  You haven't made any calculations yet.
+                  Nothing here yet. Ready to run your first calculation?
                 </p>
                 <Link href="/#calculator">
-                  <Button size="lg">Try the Calculator</Button>
+                  <Button size="lg">Let's Do This</Button>
                 </Link>
               </CardContent>
             </Card>

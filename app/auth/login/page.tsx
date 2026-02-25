@@ -60,8 +60,8 @@ export default function LoginPage() {
       setErrors({
         submit:
           error.message === 'Invalid login credentials'
-            ? 'Invalid email or password. Please try again.'
-            : error.message || 'Failed to log in. Please try again.',
+            ? 'Hmm, that email or password doesn\'t look right. Double-check and try again?'
+            : error.message || 'Something went wrong. Give it another shot.',
       })
     } finally {
       setIsLoading(false)
@@ -72,9 +72,9 @@ export default function LoginPage() {
     <div className="min-h-screen bg-gradient-to-b from-[#EFF6FF] to-white py-16 px-4">
       <div className="max-w-md mx-auto">
         <div className="text-center mb-8">
-          <h1 className="text-4xl font-bold text-[#1E3A8A] mb-2">Welcome Back</h1>
+          <h1 className="text-4xl font-bold text-[#1E3A8A] mb-2">Welcome Back!</h1>
           <p className="text-[#4B5563]">
-            Log in to access your retirement dashboard
+            Good to see you again
           </p>
         </div>
 
