@@ -2,7 +2,7 @@
 
 import { useState } from 'react'
 import { useRouter } from 'next/navigation'
-import { PlaidLink } from '@/components/PlaidLink'
+import { PlaidLinkWithConsentWithConsent } from '@/components/PlaidLinkWithConsentWithConsent'
 
 interface Account {
   id: string
@@ -194,7 +194,7 @@ export function AccountsClient({
             )}
           </div>
           <div className="flex gap-3">
-            <PlaidLink
+            <PlaidLinkWithConsent
               onSuccess={handlePlaidSuccess}
               className="px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
             />
@@ -220,12 +220,12 @@ export function AccountsClient({
             <p className="text-gray-600 mb-6">
               Connect your bank and investment accounts to automatically track your retirement savings
             </p>
-            <PlaidLink
+            <PlaidLinkWithConsent
               onSuccess={handlePlaidSuccess}
               className="inline-block px-6 py-3 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors font-medium"
             >
               Connect Your First Account
-            </PlaidLink>
+            </PlaidLinkWithConsent>
           </div>
         ) : (
           <div className="space-y-6">
