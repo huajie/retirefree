@@ -8,6 +8,7 @@ import { subDays, format } from 'date-fns'
 export const metadata = {
   title: 'My Spending - RetireFree',
   description: 'Track your spending and see where your money goes',
+  robots: { index: false, follow: false },
 }
 
 export default async function SpendingPage() {
