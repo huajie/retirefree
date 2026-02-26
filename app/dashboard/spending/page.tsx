@@ -2,6 +2,7 @@ import { redirect } from 'next/navigation'
 import { createClient } from '@/lib/supabase/server'
 import { createClient as createServiceClient } from '@supabase/supabase-js'
 import { getTransactionSummary, getRecentTransactions, getLastSyncStatus } from '@/lib/plaid/service'
+import { isPlaidConfigured } from '@/lib/plaid/config'
 import { SpendingClient } from './SpendingClient'
 import { subDays, format } from 'date-fns'
 
@@ -29,14 +30,20 @@ export default async function SpendingPage() {
     process.env.SUPABASE_SERVICE_ROLE_KEY!
   )
 
-  // Check if user has any connected accounts
-  const { data: plaidItems } = await serviceClient
-    .from('plaid_items')
-    .select('id')
-    .eq('user_id', user.id)
-    .limit(1)
+  // Check if Plaid is configured
+  const plaidConfigured = isPlaidConfigured()
 
-  const hasAccounts = !!(plaidItems && plaidItems.length > 0)
+  // Check if user has any connected accounts
+  let hasAccounts = false
+  if (plaidConfigured) {
+    const { data: plaidItems } = await serviceClient
+      .from('plaid_items')
+      .select('id')
+      .eq('user_id', user.id)
+      .limit(1)
+
+    hasAccounts = !!(plaidItems && plaidItems.length > 0)
+  }
 
   // Get last sync status
   const lastSync = await getLastSyncStatus(user.id)
