@@ -1,6 +1,9 @@
 export const metadata = {
   title: 'Terms of Service | RetireFree',
-  description: 'RetireFree Terms of Service - Terms and conditions for using our retirement planning app'
+  description: 'RetireFree Terms of Service - Terms and conditions for using our retirement planning app',
+  alternates: {
+    canonical: 'https://retirefree.app/terms',
+  },
 }
 
 export default function TermsPage() {

@@ -2,6 +2,7 @@ import type { Metadata } from "next"
 import "./globals.css"
 import { Header } from "@/components/layout/Header"
 import { Footer } from "@/components/layout/Footer"
+import { Analytics } from '@vercel/analytics/react'
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://retirefree.app"),
@@ -61,6 +62,7 @@ export default function RootLayout({
         <Header />
         {children}
         <Footer />
+        <Analytics />
       </body>
     </html>
   )

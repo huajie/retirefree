@@ -1,6 +1,9 @@
 export const metadata = {
   title: 'Privacy Policy | RetireFree',
-  description: 'RetireFree Privacy Policy - How we collect, use, and protect your data'
+  description: 'RetireFree Privacy Policy - How we collect, use, and protect your data',
+  alternates: {
+    canonical: 'https://retirefree.app/privacy',
+  },
 }
 
 export default function PrivacyPage() {

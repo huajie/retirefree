@@ -63,11 +63,62 @@ export default function Home() {
     },
   }
 
+  const faqSchema = {
+    '@context': 'https://schema.org',
+    '@type': 'FAQPage',
+    mainEntity: [
+      {
+        '@type': 'Question',
+        name: 'Is my data secure?',
+        acceptedAnswer: {
+          '@type': 'Answer',
+          text: 'Yes. We use the same encryption your bank uses. Your data is locked down tight—encrypted coming and going. We don\'t sell your info to anyone. And if you ever want out, disconnect anytime. It\'s your data.',
+        },
+      },
+      {
+        '@type': 'Question',
+        name: 'How is this different from a financial advisor?',
+        acceptedAnswer: {
+          '@type': 'Answer',
+          text: 'Financial advisors do a lot—estate planning, tax strategies, the whole nine yards. We do one thing really well: tell you how much you can safely spend right now. If you\'ve already got an advisor, great—we\'ll complement what they do. If you don\'t want to drop $5,000 a year on one, we\'ve got you covered for 15 bucks a month.',
+        },
+      },
+      {
+        '@type': 'Question',
+        name: 'What if my situation changes?',
+        acceptedAnswer: {
+          '@type': 'Answer',
+          text: 'Life happens. Maybe you inherit some money from Aunt Betty. Maybe you need a new roof. Maybe the market tanks (again). Just update your numbers and boom—you\'ve got a fresh recommendation. The AI adjusts automatically. No need to schedule a meeting with some guy in a suit.',
+        },
+      },
+      {
+        '@type': 'Question',
+        name: 'Can I cancel anytime?',
+        acceptedAnswer: {
+          '@type': 'Answer',
+          text: 'Yep. One click and you\'re out. No phone calls. No "are you sure?" guilt trips. No contracts. You\'ll have access until the end of your billing period, and then that\'s it. We\'re not gonna make you jump through hoops.',
+        },
+      },
+      {
+        '@type': 'Question',
+        name: 'How does the AI work?',
+        acceptedAnswer: {
+          '@type': 'Answer',
+          text: 'Think of it like a really smart financial calculator that\'s studied every market crash, boom, and bust since forever. It takes your age, savings, and expenses, runs them through thousands of "what if" scenarios (like, what if there\'s another 2008?), and figures out how much you can spend without going broke at 95. Then it keeps updating as things change. Pretty neat, right?',
+        },
+      },
+    ],
+  }
+
   return (
     <div className="flex flex-col">
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
       />
       {/* Hero Section */}
       <section className="bg-gradient-to-b from-[#EFF6FF] to-white py-16 md:py-24">
