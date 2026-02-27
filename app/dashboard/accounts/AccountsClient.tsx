@@ -2,7 +2,7 @@
 
 import { useState } from 'react'
 import { useRouter } from 'next/navigation'
-import { PlaidLinkWithConsentWithConsent } from '@/components/PlaidLinkWithConsentWithConsent'
+import { PlaidLinkWithConsent } from '@/components/PlaidLinkWithConsent'
 
 interface Account {
   id: string
