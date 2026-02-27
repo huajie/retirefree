@@ -6,6 +6,7 @@ import Link from 'next/link'
 import { createClient } from '@/lib/supabase/client'
 import { Button } from '@/components/ui/Button'
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/Card'
+import { RecommendedTools } from '@/components/RecommendedTools'
 
 interface Calculation {
   id: string
@@ -196,7 +197,7 @@ export function DashboardClient({ user, calculations, subscription }: DashboardC
         </Card>
 
         {/* Quick Actions */}
-        <div className="mb-8 flex flex-col sm:flex-row gap-3">
+        <div className="mb-8 flex flex-col sm:flex-row gap-3 flex-wrap">
           <Link href="/#calculator">
             <Button size="lg" className="w-full sm:w-auto">
               Run a New Calculation
@@ -205,6 +206,11 @@ export function DashboardClient({ user, calculations, subscription }: DashboardC
           <Link href="/dashboard/accounts">
             <Button size="lg" variant="secondary" className="w-full sm:w-auto">
               My Accounts
+            </Button>
+          </Link>
+          <Link href="/dashboard/analytics">
+            <Button size="lg" variant="secondary" className="w-full sm:w-auto">
+              📊 Analytics
             </Button>
           </Link>
         </div>
@@ -272,6 +278,11 @@ export function DashboardClient({ user, calculations, subscription }: DashboardC
               ))}
             </div>
           )}
+        </div>
+
+        {/* Recommended Tools */}
+        <div className="mt-12">
+          <RecommendedTools />
         </div>
       </div>
     </div>
