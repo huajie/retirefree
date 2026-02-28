@@ -1,20 +1,51 @@
 import { Configuration, PlaidApi, PlaidEnvironments } from 'plaid'
 
 /**
+ * Check if Plaid is properly configured
+ */
+export function isPlaidConfigured(): boolean {
+  return !!(
+    process.env.PLAID_CLIENT_ID &&
+    process.env.PLAID_SECRET &&
+    process.env.PLAID_ENV
+  )
+}
+
+/**
  * Plaid client configuration
  * Uses environment variables for API credentials
+ * Lazy initialization to avoid errors when Plaid is not configured
  */
-const configuration = new Configuration({
-  basePath: PlaidEnvironments[process.env.PLAID_ENV || 'sandbox'],
-  baseOptions: {
-    headers: {
-      'PLAID-CLIENT-ID': process.env.PLAID_CLIENT_ID,
-      'PLAID-SECRET': process.env.PLAID_SECRET,
-    },
-  },
-})
+let _plaidClient: PlaidApi | null = null
 
-export const plaidClient = new PlaidApi(configuration)
+export function getPlaidClient(): PlaidApi {
+  if (!_plaidClient) {
+    if (!isPlaidConfigured()) {
+      throw new Error('Plaid is not configured. Please set PLAID_CLIENT_ID, PLAID_SECRET, and PLAID_ENV environment variables.')
+    }
+
+    const configuration = new Configuration({
+      basePath: PlaidEnvironments[process.env.PLAID_ENV || 'sandbox'],
+      baseOptions: {
+        headers: {
+          'PLAID-CLIENT-ID': process.env.PLAID_CLIENT_ID,
+          'PLAID-SECRET': process.env.PLAID_SECRET,
+        },
+      },
+    })
+
+    _plaidClient = new PlaidApi(configuration)
+  }
+
+  return _plaidClient
+}
+
+// For backward compatibility
+export const plaidClient = new Proxy({} as PlaidApi, {
+  get(_target, prop) {
+    return getPlaidClient()[prop as keyof PlaidApi]
+  }
+})
 
 /**
  * Plaid products we want to use
@@ -30,14 +61,3 @@ export const PLAID_COUNTRY_CODES = ['US'] as const
  * Environment check
  */
 export const PLAID_ENV = process.env.PLAID_ENV || 'sandbox'
-
-/**
- * Check if Plaid is properly configured
- */
-export function isPlaidConfigured(): boolean {
-  return !!(
-    process.env.PLAID_CLIENT_ID &&
-    process.env.PLAID_SECRET &&
-    process.env.PLAID_ENV
-  )
-}
