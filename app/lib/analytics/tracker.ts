@@ -3,6 +3,14 @@
  * Tracks page views, affiliate clicks, and user events
  */
 
+import {
+  getClientDeviceInfo,
+  categorizeTrafficSource,
+  getSessionId,
+  isFirstPageView,
+  getPageLoadTime,
+} from './enrichment'
+
 export interface TrackingEvent {
   event_type: string
   page_url: string
@@ -10,6 +18,18 @@ export interface TrackingEvent {
   user_id?: string
   metadata?: Record<string, any>
   timestamp: string
+  session_id?: string
+  device_type?: string
+  browser?: string
+  os?: string
+  screen_width?: number
+  screen_height?: number
+  traffic_source?: string
+  traffic_medium?: string
+  traffic_campaign?: string
+  referrer_domain?: string
+  is_first_page?: boolean
+  page_load_time?: number
 }
 
 /**
@@ -21,6 +41,20 @@ export async function trackPageView(
   metadata?: Record<string, any>
 ) {
   try {
+    // Get device info
+    const deviceInfo = getClientDeviceInfo()
+
+    // Get traffic source
+    const trafficSource = categorizeTrafficSource(
+      document.referrer,
+      window.location.href
+    )
+
+    // Get session info
+    const sessionId = getSessionId()
+    const isFirst = isFirstPageView()
+    const loadTime = getPageLoadTime()
+
     await fetch('/api/analytics/track', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
@@ -31,6 +65,19 @@ export async function trackPageView(
         user_id: userId,
         metadata,
         timestamp: new Date().toISOString(),
+        // Enhanced tracking
+        session_id: sessionId,
+        device_type: deviceInfo.type,
+        browser: deviceInfo.browser,
+        os: deviceInfo.os,
+        screen_width: deviceInfo.screenWidth,
+        screen_height: deviceInfo.screenHeight,
+        traffic_source: trafficSource.source,
+        traffic_medium: trafficSource.medium,
+        traffic_campaign: trafficSource.campaign,
+        referrer_domain: trafficSource.referrer_domain,
+        is_first_page: isFirst,
+        page_load_time: loadTime,
       }),
     })
   } catch (error) {

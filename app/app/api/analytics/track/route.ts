@@ -4,7 +4,26 @@ import { createClient } from '@/lib/supabase/server'
 export async function POST(request: Request) {
   try {
     const body = await request.json()
-    const { event_type, page_url, referrer, user_id, metadata, timestamp } = body
+    const {
+      event_type,
+      page_url,
+      referrer,
+      user_id,
+      metadata,
+      timestamp,
+      session_id,
+      device_type,
+      browser,
+      os,
+      screen_width,
+      screen_height,
+      traffic_source,
+      traffic_medium,
+      traffic_campaign,
+      referrer_domain,
+      is_first_page,
+      page_load_time,
+    } = body
 
     // Validate required fields
     if (!event_type || !page_url) {
@@ -28,6 +47,19 @@ export async function POST(request: Request) {
       ip_address: request.headers.get('x-forwarded-for') ||
                   request.headers.get('x-real-ip') ||
                   'unknown',
+      // Enhanced tracking fields
+      session_id: session_id || null,
+      device_type: device_type || null,
+      browser: browser || null,
+      os: os || null,
+      screen_width: screen_width || null,
+      screen_height: screen_height || null,
+      traffic_source: traffic_source || null,
+      traffic_medium: traffic_medium || null,
+      traffic_campaign: traffic_campaign || null,
+      referrer_domain: referrer_domain || null,
+      is_first_page: is_first_page || false,
+      page_load_time: page_load_time || null,
     })
 
     if (error) {
