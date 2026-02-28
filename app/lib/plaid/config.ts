@@ -40,10 +40,13 @@ export function getPlaidClient(): PlaidApi {
   return _plaidClient
 }
 
-// For backward compatibility
-export const plaidClient = new Proxy({} as PlaidApi, {
+// For backward compatibility - export plaidClient
+// This is safe because the Proxy only triggers getPlaidClient() when methods are accessed
+export const plaidClient: PlaidApi = new Proxy({} as PlaidApi, {
   get(_target, prop) {
-    return getPlaidClient()[prop as keyof PlaidApi]
+    const client = getPlaidClient()
+    const value = client[prop as keyof PlaidApi]
+    return typeof value === 'function' ? value.bind(client) : value
   }
 })
 

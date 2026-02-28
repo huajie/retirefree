@@ -13,22 +13,32 @@ export const metadata = {
 }
 
 export default async function SpendingPage() {
-  const supabase = await createClient()
+  try {
+    const supabase = await createClient()
 
-  // Check if user is authenticated
-  const {
-    data: { user },
-  } = await supabase.auth.getUser()
+    // Check if user is authenticated
+    const {
+      data: { user },
+    } = await supabase.auth.getUser()
 
-  if (!user) {
-    redirect('/auth/login')
-  }
+    if (!user) {
+      redirect('/auth/login')
+    }
 
-  // Get service client for accessing data
-  const serviceClient = createServiceClient(
-    process.env.NEXT_PUBLIC_SUPABASE_URL!,
-    process.env.SUPABASE_SERVICE_ROLE_KEY!
-  )
+    // Validate environment variables
+    if (!process.env.NEXT_PUBLIC_SUPABASE_URL || !process.env.SUPABASE_SERVICE_ROLE_KEY) {
+      console.error('Missing required environment variables:', {
+        hasUrl: !!process.env.NEXT_PUBLIC_SUPABASE_URL,
+        hasServiceKey: !!process.env.SUPABASE_SERVICE_ROLE_KEY
+      })
+      throw new Error('Server configuration error')
+    }
+
+    // Get service client for accessing data
+    const serviceClient = createServiceClient(
+      process.env.NEXT_PUBLIC_SUPABASE_URL,
+      process.env.SUPABASE_SERVICE_ROLE_KEY
+    )
 
   // Check if Plaid is configured
   const plaidConfigured = isPlaidConfigured()
@@ -76,17 +86,21 @@ export default async function SpendingPage() {
 
   const calculatorMonthlyExpenses = userData?.monthly_expenses || null
 
-  return (
-    <SpendingClient
-      hasAccounts={hasAccounts}
-      lastSync={lastSync}
-      summary={summary}
-      recentTransactions={recentTransactions || []}
-      calculatorMonthlyExpenses={calculatorMonthlyExpenses}
-      dateRange={{
-        start: startDateStr,
-        end: endDateStr,
-      }}
-    />
-  )
+    return (
+      <SpendingClient
+        hasAccounts={hasAccounts}
+        lastSync={lastSync}
+        summary={summary}
+        recentTransactions={recentTransactions || []}
+        calculatorMonthlyExpenses={calculatorMonthlyExpenses}
+        dateRange={{
+          start: startDateStr,
+          end: endDateStr,
+        }}
+      />
+    )
+  } catch (error) {
+    console.error('Error in SpendingPage:', error)
+    throw error
+  }
 }
