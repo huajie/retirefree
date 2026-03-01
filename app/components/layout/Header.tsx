@@ -46,6 +46,9 @@ export function Header() {
                 <Link href="#features" className="text-[#4B5563] hover:text-[#2563EB] transition-colors">
                   Features
                 </Link>
+                <Link href="/blog" className="text-[#4B5563] hover:text-[#2563EB] transition-colors">
+                  Blog
+                </Link>
                 <Link href="#pricing" className="text-[#4B5563] hover:text-[#2563EB] transition-colors">
                   Pricing
                 </Link>
@@ -71,6 +74,9 @@ export function Header() {
                     </Link>
                   </>
                 )}
+                <Link href="/blog" className="text-[#4B5563] hover:text-[#2563EB] transition-colors">
+                  Blog
+                </Link>
                 <Link href="/pricing" className="text-[#4B5563] hover:text-[#2563EB] transition-colors">
                   Pricing
                 </Link>
@@ -140,6 +146,13 @@ export function Header() {
                     Features
                   </Link>
                   <Link
+                    href="/blog"
+                    className="text-[#4B5563] hover:text-[#2563EB] transition-colors px-2 py-1"
+                    onClick={() => setMobileMenuOpen(false)}
+                  >
+                    Blog
+                  </Link>
+                  <Link
                     href="#pricing"
                     className="text-[#4B5563] hover:text-[#2563EB] transition-colors px-2 py-1"
                     onClick={() => setMobileMenuOpen(false)}
@@ -188,6 +201,13 @@ export function Header() {
                       </Link>
                     </>
                   )}
+                  <Link
+                    href="/blog"
+                    className="text-[#4B5563] hover:text-[#2563EB] transition-colors px-2 py-1"
+                    onClick={() => setMobileMenuOpen(false)}
+                  >
+                    Blog
+                  </Link>
                   <Link
                     href="/pricing"
                     className="text-[#4B5563] hover:text-[#2563EB] transition-colors px-2 py-1"
