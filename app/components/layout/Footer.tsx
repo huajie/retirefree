@@ -77,6 +77,11 @@ export function Footer() {
             RetireFree provides educational information only. This is not financial advice.
             Consult a licensed advisor for personalized recommendations.
           </p>
+          <p className="mt-3 text-xs">
+            <a href="https://where55.com" target="_blank" rel="noopener noreferrer" className="text-blue-600 hover:underline">
+              Looking for 55+ communities? Visit Where55.com
+            </a>
+          </p>
         </div>
       </div>
     </footer>

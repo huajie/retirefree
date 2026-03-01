@@ -89,6 +89,21 @@ export default function BlogPage() {
             Try Free Calculator
           </Link>
         </div>
+
+        {/* Sister Site Link */}
+        <div className="mt-8 text-center bg-blue-50 rounded-lg p-6 border border-blue-200">
+          <p className="text-gray-700 mb-3">
+            Planning your retirement lifestyle?
+          </p>
+          <a
+            href="https://where55.com"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="text-blue-600 font-semibold hover:underline text-lg"
+          >
+            Explore 55+ Communities at Where55.com →
+          </a>
+        </div>
       </div>
     </div>
   )

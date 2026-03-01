@@ -278,6 +278,10 @@ export default function HowItWorksPage() {
                 <h4 className="font-semibold text-lg text-blue-600">See Pricing →</h4>
                 <p className="text-gray-600 text-sm mt-1">Monthly monitoring for $15/month</p>
               </Link>
+              <a href="https://where55.com" target="_blank" rel="noopener noreferrer" className="block p-4 bg-blue-50 rounded-lg hover:bg-blue-100 transition border border-blue-200">
+                <h4 className="font-semibold text-lg text-blue-600">Browse 55+ Communities →</h4>
+                <p className="text-gray-600 text-sm mt-1">Explore active adult communities nationwide at Where55.com</p>
+              </a>
             </div>
           </div>
         </div>

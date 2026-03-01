@@ -297,6 +297,10 @@ export default function FourZeroOneKWithdrawalPage() {
                 <h4 className="font-semibold text-lg text-blue-600">How to Calculate Your Safe Withdrawal Rate →</h4>
                 <p className="text-gray-600 text-sm mt-1">Step-by-step guide to personalizing your withdrawal rate</p>
               </Link>
+              <a href="https://where55.com" target="_blank" rel="noopener noreferrer" className="block p-4 bg-blue-50 rounded-lg hover:bg-blue-100 transition border border-blue-200">
+                <h4 className="font-semibold text-lg text-blue-600">Find 55+ Communities Near You →</h4>
+                <p className="text-gray-600 text-sm mt-1">Browse active adult communities and retirement living options at Where55.com</p>
+              </a>
             </div>
           </div>
         </div>

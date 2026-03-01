@@ -290,6 +290,10 @@ export default function CalculatorPage() {
                 <h4 className="font-semibold text-lg text-blue-600">401k Withdrawal Calculator →</h4>
                 <p className="text-gray-600 text-sm mt-1">Optimize which accounts to withdraw from first</p>
               </Link>
+              <a href="https://where55.com" target="_blank" rel="noopener noreferrer" className="block p-4 bg-blue-50 rounded-lg hover:bg-blue-100 transition border border-blue-200">
+                <h4 className="font-semibold text-lg text-blue-600">Explore 55+ Communities →</h4>
+                <p className="text-gray-600 text-sm mt-1">Find active adult communities and retirement living options at Where55.com</p>
+              </a>
             </div>
           </div>
         </div>
