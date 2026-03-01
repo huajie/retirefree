@@ -24,7 +24,7 @@ export default function CalculatorPage() {
     offers: {
       '@type': 'Offer',
       price: '0',
-      priceCurrency': 'USD',
+      priceCurrency: 'USD',
       description: 'Free calculator, no signup required'
     }
   }
