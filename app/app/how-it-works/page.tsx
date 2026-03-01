@@ -4,9 +4,7 @@ import { Metadata } from 'next'
 export const metadata: Metadata = {
   title: 'How RetireFree Works - AI-Powered Retirement Planning | RetireFree',
   description: 'Learn how RetireFree uses Monte Carlo simulation and AI to create personalized retirement withdrawal strategies. Transparent methodology, no black boxes.',
-  keywords: 'how retir
-
-efree works, monte carlo simulation, retirement calculator methodology, ai retirement planning, safe withdrawal rate calculation',
+  keywords: 'how retirefree works, monte carlo simulation, retirement calculator methodology, ai retirement planning, safe withdrawal rate calculation',
   openGraph: {
     title: 'How RetireFree Works - Transparent Retirement Planning',
     description: 'See exactly how our AI creates personalized withdrawal recommendations',
