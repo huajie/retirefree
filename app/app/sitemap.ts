@@ -4,6 +4,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
   const baseUrl = 'https://retirefree.app'
   const currentDate = new Date()
 
+  // Updated sitemap with all calculator pages
   return [
     // Core pages
     {
