@@ -5,12 +5,41 @@ export default function sitemap(): MetadataRoute.Sitemap {
   const currentDate = new Date()
 
   return [
+    // Core pages
     {
       url: baseUrl,
       lastModified: currentDate,
       changeFrequency: 'weekly',
       priority: 1.0,
     },
+    {
+      url: `${baseUrl}/pricing`,
+      lastModified: currentDate,
+      changeFrequency: 'monthly',
+      priority: 0.9,
+    },
+    {
+      url: `${baseUrl}/how-it-works`,
+      lastModified: new Date('2026-03-01'),
+      changeFrequency: 'monthly',
+      priority: 0.8,
+    },
+
+    // Calculator pages (high value)
+    {
+      url: `${baseUrl}/calculator`,
+      lastModified: new Date('2026-03-01'),
+      changeFrequency: 'weekly',
+      priority: 0.9,
+    },
+    {
+      url: `${baseUrl}/401k-withdrawal`,
+      lastModified: new Date('2026-03-01'),
+      changeFrequency: 'weekly',
+      priority: 0.9,
+    },
+
+    // Blog
     {
       url: `${baseUrl}/blog`,
       lastModified: new Date('2026-02-28'),
@@ -35,12 +64,8 @@ export default function sitemap(): MetadataRoute.Sitemap {
       changeFrequency: 'monthly',
       priority: 0.8,
     },
-    {
-      url: `${baseUrl}/pricing`,
-      lastModified: currentDate,
-      changeFrequency: 'monthly',
-      priority: 0.8,
-    },
+
+    // Legal
     {
       url: `${baseUrl}/privacy`,
       lastModified: new Date('2026-02-26'),
