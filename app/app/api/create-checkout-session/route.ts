@@ -57,6 +57,7 @@ export async function POST(request: NextRequest) {
     const session = await stripe.checkout.sessions.create({
       customer: customerId,
       payment_method_types: ['card'],
+      payment_method_collection: 'always', // Disable Stripe Link for simpler checkout
       line_items: [
         {
           price_data: {
