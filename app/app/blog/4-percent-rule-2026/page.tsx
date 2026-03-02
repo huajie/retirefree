@@ -234,7 +234,7 @@ export default function FourPercentRulePage() {
               </li>
               <li>
                 <a
-                  href="https://www.amazon.com/Bogleheads-Guide-Retirement-Planning/dp/1118241096?&linkCode=ll1&tag=huajie-20&linkId=example&language=en_US&ref_=as_li_ss_tl"
+                  href="https://www.amazon.com/Bogleheads-Guide-Retirement-Planning/dp/0470919019?&linkCode=ll1&tag=huajie-20&linkId=example&language=en_US&ref_=as_li_ss_tl"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="text-blue-600 hover:underline font-semibold"
