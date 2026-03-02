@@ -211,6 +211,59 @@ export default function FourPercentRulePage() {
             Most important: Don't just follow a rule blindly. Use tools, run simulations, and build flexibility into your plan.
           </p>
 
+          {/* Recommended Reading */}
+          <div className="mt-16 bg-gray-50 border border-gray-200 p-8 rounded-lg">
+            <h3 className="text-2xl font-bold mb-4">📚 Recommended Reading</h3>
+            <p className="mb-6 text-gray-700">
+              Want to dive deeper into safe withdrawal strategies? These books are considered
+              essential reading by the retirement planning community:
+            </p>
+            <ul className="space-y-4 mb-4">
+              <li>
+                <a
+                  href="https://www.amazon.com/Your-Complete-Guide-Successful-Retirement/dp/0857199250?&linkCode=ll1&tag=retirefree-20&linkId=example&language=en_US&ref_=as_li_ss_tl"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-blue-600 hover:underline font-semibold"
+                >
+                  Your Complete Guide to a Successful and Secure Retirement by Larry Swedroe
+                </a>
+                <p className="text-sm text-gray-600 mt-1">
+                  Comprehensive retirement planning guide covering withdrawal strategies, portfolio management, and risk mitigation.
+                </p>
+              </li>
+              <li>
+                <a
+                  href="https://www.amazon.com/Bogleheads-Guide-Retirement-Planning/dp/1118241096?&linkCode=ll1&tag=retirefree-20&linkId=example&language=en_US&ref_=as_li_ss_tl"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-blue-600 hover:underline font-semibold"
+                >
+                  The Bogleheads' Guide to Retirement Planning
+                </a>
+                <p className="text-sm text-gray-600 mt-1">
+                  Evidence-based retirement planning from the Bogleheads community, including detailed analysis of withdrawal rates.
+                </p>
+              </li>
+              <li>
+                <a
+                  href="https://www.amazon.com/Simple-Path-Wealth-financial-independence/dp/1533667926?&linkCode=ll1&tag=retirefree-20&linkId=example&language=en_US&ref_=as_li_ss_tl"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-blue-600 hover:underline font-semibold"
+                >
+                  The Simple Path to Wealth by JL Collins
+                </a>
+                <p className="text-sm text-gray-600 mt-1">
+                  Straightforward approach to building wealth and sustaining it through retirement. FIRE community favorite.
+                </p>
+              </li>
+            </ul>
+            <p className="text-xs text-gray-500 italic">
+              As an Amazon Associate, we earn from qualifying purchases at no additional cost to you.
+            </p>
+          </div>
+
           {/* Author Bio */}
           <div className="border-t border-gray-200 mt-12 pt-8">
             <p className="text-sm text-gray-600">

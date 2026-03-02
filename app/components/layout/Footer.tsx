@@ -82,6 +82,11 @@ export function Footer() {
               Looking for 55+ communities? Visit Where55.com
             </a>
           </p>
+          <p className="mt-3 text-xs text-[#6B7280]">
+            As an Amazon Associate, we earn from qualifying purchases. We may receive commissions
+            when you click our links and make purchases. This helps keep RetireFree free.
+            We only recommend products we believe benefit retirees.
+          </p>
         </div>
       </div>
     </footer>
