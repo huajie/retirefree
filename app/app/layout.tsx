@@ -4,6 +4,7 @@ import { Header } from "@/components/layout/Header"
 import { Footer } from "@/components/layout/Footer"
 import { Analytics } from '@vercel/analytics/react'
 import { PageViewTracker } from '@/components/PageViewTracker'
+import { GoogleAnalytics } from '@/components/GoogleAnalytics'
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://retirefree.app"),
@@ -60,6 +61,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className="antialiased">
+        <GoogleAnalytics />
         <PageViewTracker />
         <Header />
         {children}
