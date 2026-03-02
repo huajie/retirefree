@@ -43,10 +43,30 @@ export default function sitemap(): MetadataRoute.Sitemap {
     // Blog
     {
       url: `${baseUrl}/blog`,
-      lastModified: new Date('2026-02-28'),
+      lastModified: new Date('2026-03-03'),
       changeFrequency: 'weekly',
       priority: 0.9,
     },
+    // New posts (March 3, 2026)
+    {
+      url: `${baseUrl}/blog/social-security-cola-2026-medicare`,
+      lastModified: new Date('2026-03-03'),
+      changeFrequency: 'monthly',
+      priority: 0.8,
+    },
+    {
+      url: `${baseUrl}/blog/roth-conversion-strategy-2026`,
+      lastModified: new Date('2026-03-03'),
+      changeFrequency: 'monthly',
+      priority: 0.8,
+    },
+    {
+      url: `${baseUrl}/blog/required-minimum-distribution-rmd-2026`,
+      lastModified: new Date('2026-03-03'),
+      changeFrequency: 'monthly',
+      priority: 0.8,
+    },
+    // Earlier posts (February 28, 2026)
     {
       url: `${baseUrl}/blog/4-percent-rule-2026`,
       lastModified: new Date('2026-02-28'),

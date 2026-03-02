@@ -9,6 +9,30 @@ export const metadata: Metadata = {
 
 const blogPosts = [
   {
+    slug: 'social-security-cola-2026-medicare',
+    title: 'Social Security COLA 2026: How Medicare Premiums Could Steal Your Raise',
+    excerpt: 'The 2.8% Social Security COLA sounds great—until you see the 9.7% Medicare Part B premium increase. Here\'s what retirees actually keep and how to protect your income.',
+    date: 'March 3, 2026',
+    readTime: '8 min read',
+    category: 'Social Security & Medicare'
+  },
+  {
+    slug: 'roth-conversion-strategy-2026',
+    title: 'Roth Conversion Strategy 2026: Should You Convert Before Tax Rates Change?',
+    excerpt: 'Tax rates may rise after 2025. Learn when Roth conversions make sense, how to avoid costly mistakes, and strategies to minimize taxes while building tax-free retirement income.',
+    date: 'March 3, 2026',
+    readTime: '10 min read',
+    category: 'Tax Planning'
+  },
+  {
+    slug: 'required-minimum-distribution-rmd-2026',
+    title: 'Required Minimum Distribution (RMD) Calculator 2026: When to Take RMDs and How Much',
+    excerpt: 'RMDs start at age 73 in 2026. Learn how to calculate yours, avoid the 25% penalty, use Qualified Charitable Distributions, and minimize taxes on forced withdrawals.',
+    date: 'March 3, 2026',
+    readTime: '9 min read',
+    category: 'Tax Planning'
+  },
+  {
     slug: '4-percent-rule-2026',
     title: 'Is the 4% Rule Still Safe in 2026?',
     excerpt: 'The 4% rule has guided retirees for decades. But with high valuations and lower bond yields in 2026, is it still safe? We analyze the latest research.',
