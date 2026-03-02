@@ -71,8 +71,8 @@
 
 ### Partnerships
 - **Active Affiliates:** 1 (Amazon Associates ✅)
-- **Pending Approval:** 0
-- **In Discussion:** ShareASale, CJ Affiliate
+- **Pending Approval:** 1 (ShareASale - submitted)
+- **On Hold:** ProductHunt (per owner decision)
 - **Goal:** 5 active by month-end
 
 ### Affiliate Revenue
@@ -116,13 +116,15 @@
 ## Action Items Progress
 
 ### Week 1 Goals (Mar 1-7)
-- [ ] Submit to 3 directories (ProductHunt, AlternativeTo, Capterra)
+- [⏸️] ProductHunt submission (on hold per owner)
+- [ ] Submit to AlternativeTo, Capterra
 - [ ] Send 10 backlink outreach emails
 - [ ] Make 15 Reddit comments
 - [ ] Sign up for HARO
 - [✅] Amazon Associates approved
-- [ ] Add affiliate disclosures to footer
-- [ ] Deploy first Amazon links
+- [✅] ShareASale application submitted
+- [✅] Add affiliate disclosures to footer
+- [✅] Deploy first Amazon links
 
 ### This Month Goals (March)
 - [ ] 500 daily visitors
@@ -160,9 +162,11 @@
 
 **March 2, 2026:**
 - 🎉 Amazon Associates approved!
-- First affiliate partner secured
-- Next: Add disclosure + deploy product links
-- Focus: Execute autonomous CEO actions (HARO, directories, outreach)
+- ✅ Affiliate disclosure added to footer (all pages)
+- ✅ First 3 Amazon book links deployed to blog
+- 📤 ShareASale application submitted
+- ⏸️ ProductHunt on hold (owner decision)
+- Next: AlternativeTo, HARO signup, backlink outreach
 
 **Next Review:** March 3, 2026 @ 8PM
 

@@ -221,7 +221,7 @@ export default function FourPercentRulePage() {
             <ul className="space-y-4 mb-4">
               <li>
                 <a
-                  href="https://www.amazon.com/Your-Complete-Guide-Successful-Retirement/dp/0857199250?&linkCode=ll1&tag=retirefree-20&linkId=example&language=en_US&ref_=as_li_ss_tl"
+                  href="https://www.amazon.com/Your-Complete-Guide-Successful-Retirement/dp/0857199250?&linkCode=ll1&tag=huajie-20&linkId=example&language=en_US&ref_=as_li_ss_tl"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="text-blue-600 hover:underline font-semibold"
@@ -234,7 +234,7 @@ export default function FourPercentRulePage() {
               </li>
               <li>
                 <a
-                  href="https://www.amazon.com/Bogleheads-Guide-Retirement-Planning/dp/1118241096?&linkCode=ll1&tag=retirefree-20&linkId=example&language=en_US&ref_=as_li_ss_tl"
+                  href="https://www.amazon.com/Bogleheads-Guide-Retirement-Planning/dp/1118241096?&linkCode=ll1&tag=huajie-20&linkId=example&language=en_US&ref_=as_li_ss_tl"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="text-blue-600 hover:underline font-semibold"
@@ -247,7 +247,7 @@ export default function FourPercentRulePage() {
               </li>
               <li>
                 <a
-                  href="https://www.amazon.com/Simple-Path-Wealth-financial-independence/dp/1533667926?&linkCode=ll1&tag=retirefree-20&linkId=example&language=en_US&ref_=as_li_ss_tl"
+                  href="https://www.amazon.com/Simple-Path-Wealth-financial-independence/dp/1533667926?&linkCode=ll1&tag=huajie-20&linkId=example&language=en_US&ref_=as_li_ss_tl"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="text-blue-600 hover:underline font-semibold"
