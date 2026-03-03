@@ -2,7 +2,7 @@
 
 ## ✅ Webhook Created Successfully
 
-**Webhook Endpoint ID:** `we_1T6lB9FfNlHV1DmLHmXT88eX`
+**Webhook Endpoint ID:** `we_1T6lmPFx8Rs3d5BtsZ4fDf1k`
 
 **Webhook URL:** `https://retirefree.app/api/webhooks/stripe`
 
@@ -27,7 +27,7 @@ The following events are configured to be sent to your webhook endpoint:
 
 ## Webhook Secret
 
-**New Webhook Secret:** `whsec_AWf5CsRDy04VyJFlBFHzFevT74hzgIaz`
+**New Webhook Secret:** `whsec_zmL1nh0N0MClgLeqBKWJKCy3VozbJdUt`
 
 ### Updated Locations
 
@@ -137,6 +137,6 @@ If webhooks aren't working:
 ---
 
 **Setup completed:** 2026-03-03
-**Webhook ID:** we_1T6lB9FfNlHV1DmLHmXT88eX
+**Webhook ID:** we_1T6lmPFx8Rs3d5BtsZ4fDf1k
 **Environment:** Test Mode
 
