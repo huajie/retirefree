@@ -213,11 +213,14 @@ export function DashboardClient({ user, calculations, subscription }: DashboardC
               My Accounts
             </Button>
           </Link>
-          <Link href="/dashboard/analytics">
-            <Button size="lg" variant="secondary" className="w-full sm:w-auto">
-              📊 Analytics
-            </Button>
-          </Link>
+          {/* Only show Analytics to owner */}
+          {user.email === 'huajie.liu@gmail.com' && (
+            <Link href="/dashboard/analytics">
+              <Button size="lg" variant="secondary" className="w-full sm:w-auto">
+                📊 Analytics
+              </Button>
+            </Link>
+          )}
         </div>
 
         {/* Calculations History */}
