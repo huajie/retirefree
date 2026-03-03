@@ -178,7 +178,7 @@ export function DashboardClient({ user, calculations, subscription }: DashboardC
                   </p>
                 )}
               </div>
-              {!subscription || subscription.status !== 'active' ? (
+              {!subscription || (subscription.status !== 'active' && subscription.status !== 'trialing') ? (
                 <Link href="/pricing">
                   <Button size="lg">Get Full Access</Button>
                 </Link>
