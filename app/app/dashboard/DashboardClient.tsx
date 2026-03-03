@@ -40,6 +40,11 @@ export function DashboardClient({ user, calculations, subscription }: DashboardC
   const [isLoggingOut, setIsLoggingOut] = useState(false)
   const [isLoadingPortal, setIsLoadingPortal] = useState(false)
 
+  // DEBUG: Log subscription data
+  console.log('[DashboardClient] Subscription prop:', subscription)
+  console.log('[DashboardClient] Subscription status:', subscription?.status)
+  console.log('[DashboardClient] User email:', user.email)
+
   const handleLogout = async () => {
     setIsLoggingOut(true)
     await supabase.auth.signOut()
