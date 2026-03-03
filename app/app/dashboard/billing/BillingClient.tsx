@@ -169,7 +169,7 @@ export default function BillingClient({ user, subscription }: BillingClientProps
               <Button
                 onClick={handleUpdatePaymentMethod}
                 disabled={loading}
-                variant="outline"
+                variant="secondary"
               >
                 {loading ? 'Loading...' : 'Update Payment Method'}
               </Button>
@@ -190,7 +190,7 @@ export default function BillingClient({ user, subscription }: BillingClientProps
               <Button
                 onClick={handleCancelSubscription}
                 disabled={loading}
-                variant="destructive"
+                variant="primary"
               >
                 {loading ? 'Processing...' : 'Cancel Subscription'}
               </Button>

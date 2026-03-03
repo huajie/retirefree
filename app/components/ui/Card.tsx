@@ -40,6 +40,14 @@ export function CardTitle({ children, className, ...props }: HTMLAttributes<HTML
   )
 }
 
+export function CardDescription({ children, className, ...props }: HTMLAttributes<HTMLParagraphElement>) {
+  return (
+    <p className={cn('text-sm text-gray-600', className)} {...props}>
+      {children}
+    </p>
+  )
+}
+
 export function CardContent({ children, className, ...props }: HTMLAttributes<HTMLDivElement>) {
   return (
     <div className={cn('', className)} {...props}>

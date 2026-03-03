@@ -1,7 +1,7 @@
 import * as React from "react"
 
 export interface BadgeProps extends React.HTMLAttributes<HTMLDivElement> {
-  variant?: 'default' | 'success' | 'warning' | 'error' | 'secondary'
+  variant?: 'default' | 'success' | 'warning' | 'error' | 'secondary' | 'destructive' | 'outline'
 }
 
 export function Badge({
@@ -15,7 +15,9 @@ export function Badge({
     success: 'bg-green-100 text-green-800',
     warning: 'bg-yellow-100 text-yellow-800',
     error: 'bg-red-100 text-red-800',
-    secondary: 'bg-blue-100 text-blue-800'
+    destructive: 'bg-red-100 text-red-800',
+    secondary: 'bg-blue-100 text-blue-800',
+    outline: 'bg-white border border-gray-300 text-gray-700'
   }
 
   return (
