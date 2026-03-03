@@ -36,6 +36,9 @@ export default async function DashboardPage() {
     .eq('user_id', user.id)
     .single()
 
+  console.log('[Dashboard] User ID:', user.id)
+  console.log('[Dashboard] Subscription data:', JSON.stringify(subscription))
+
   return (
     <DashboardClient
       user={user}
