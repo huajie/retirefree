@@ -48,9 +48,17 @@ export async function POST(request: NextRequest) {
         email: user.email,
         metadata: {
           supabase_user_id: user.id,
+          app: 'retirefree', // Identify which app this customer belongs to
         },
       })
       customerId = customer.id
+    } else {
+      // Update existing customer metadata to mark it as RetireFree
+      await stripe.customers.update(customerId, {
+        metadata: {
+          app: 'retirefree',
+        },
+      })
     }
 
     // Create Stripe checkout session
@@ -81,6 +89,7 @@ export async function POST(request: NextRequest) {
         trial_period_days: 7,
         metadata: {
           supabase_user_id: user.id,
+          app: 'retirefree', // Mark subscription as belonging to RetireFree
         },
       },
       metadata: {

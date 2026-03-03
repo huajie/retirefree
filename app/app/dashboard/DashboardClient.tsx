@@ -38,7 +38,6 @@ export function DashboardClient({ user, calculations, subscription }: DashboardC
   const router = useRouter()
   const supabase = createClient()
   const [isLoggingOut, setIsLoggingOut] = useState(false)
-  const [isLoadingPortal, setIsLoadingPortal] = useState(false)
 
   // DEBUG: Log subscription data
   console.log('[DashboardClient] Subscription prop:', subscription)
@@ -52,26 +51,9 @@ export function DashboardClient({ user, calculations, subscription }: DashboardC
     router.refresh()
   }
 
-  const handleManageSubscription = async () => {
-    setIsLoadingPortal(true)
-    try {
-      const response = await fetch('/api/create-portal-session', {
-        method: 'POST',
-      })
-
-      const data = await response.json()
-
-      if (!response.ok) {
-        throw new Error(data.error || 'Failed to create portal session')
-      }
-
-      // Redirect to Stripe portal
-      window.location.href = data.url
-    } catch (error) {
-      console.error('Error creating portal session:', error)
-      alert(error instanceof Error ? error.message : 'Failed to open billing portal')
-      setIsLoadingPortal(false)
-    }
+  const handleManageSubscription = () => {
+    // Redirect to custom billing page instead of Stripe portal
+    router.push('/dashboard/billing')
   }
 
   const formatCurrency = (value: number) => {
@@ -192,7 +174,6 @@ export function DashboardClient({ user, calculations, subscription }: DashboardC
                   variant="secondary"
                   size="lg"
                   onClick={handleManageSubscription}
-                  isLoading={isLoadingPortal}
                 >
                   Manage Billing
                 </Button>
