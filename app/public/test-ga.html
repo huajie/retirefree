@@ -3,43 +3,173 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>GA Test</title>
+    <title>GA Test - RetireFree</title>
 
-    <!-- Google Analytics -->
+    <!-- Google tag (gtag.js) -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-WRFN778Y9W"></script>
     <script>
       window.dataLayer = window.dataLayer || [];
       function gtag(){dataLayer.push(arguments);}
       gtag('js', new Date());
+
       gtag('config', 'G-WRFN778Y9W', {
+        'send_page_view': true,
         'debug_mode': true,
-        'send_page_view': true
+        'cookie_flags': 'SameSite=None;Secure'
       });
 
-      console.log('GA Test Page Loaded');
-      console.log('gtag function:', typeof gtag);
+      console.log('=== Google Analytics Test ===');
+      console.log('gtag loaded:', typeof gtag === 'function');
       console.log('dataLayer:', window.dataLayer);
 
-      // Send a test event
+      // Wait for gtag to be fully ready
       setTimeout(function() {
-        gtag('event', 'test_event', {
+        console.log('Sending test events...');
+
+        // Send multiple test events
+        gtag('event', 'page_view', {
+          'page_title': 'GA Test Page',
+          'page_location': window.location.href,
+          'page_path': window.location.pathname
+        });
+
+        gtag('event', 'test_event_1', {
           'event_category': 'test',
-          'event_label': 'manual_test',
+          'event_label': 'automatic_test',
           'value': 1
         });
-        console.log('Test event sent');
-      }, 2000);
+
+        console.log('Test events sent to GA');
+        console.log('Check GA Realtime > Events to see: test_event_1');
+      }, 3000);
     </script>
+
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        max-width: 800px;
+        margin: 50px auto;
+        padding: 20px;
+        line-height: 1.6;
+      }
+      .info {
+        background: #f0f0f0;
+        padding: 15px;
+        border-radius: 5px;
+        margin: 20px 0;
+      }
+      button {
+        background: #2563EB;
+        color: white;
+        border: none;
+        padding: 12px 24px;
+        font-size: 16px;
+        border-radius: 5px;
+        cursor: pointer;
+        margin: 10px 5px;
+      }
+      button:hover {
+        background: #1D4ED8;
+      }
+      .status {
+        padding: 10px;
+        margin: 10px 0;
+        border-radius: 5px;
+      }
+      .success { background: #d1fae5; color: #065f46; }
+      .warning { background: #fef3c7; color: #92400e; }
+    </style>
 </head>
 <body>
-    <h1>Google Analytics Test Page</h1>
-    <p>Property ID: 526700510</p>
-    <p>Measurement ID: G-WRFN778Y9W</p>
-    <p>Open the browser console to see GA debug information.</p>
-    <p>Check Google Analytics Real-time reports to see if this page shows up.</p>
+    <h1>🧪 Google Analytics Test Page</h1>
 
-    <button onclick="gtag('event', 'button_click', {'event_category': 'engagement', 'event_label': 'test_button'});">
-        Click Me to Send Event
-    </button>
+    <div class="info">
+        <strong>Property ID:</strong> 526700510<br>
+        <strong>Measurement ID:</strong> G-WRFN778Y9W<br>
+        <strong>Domain:</strong> retirefree.app
+    </div>
+
+    <h2>Instructions:</h2>
+    <ol>
+        <li>Open your browser's Developer Console (F12)</li>
+        <li>Look for "Google Analytics Test" messages</li>
+        <li>Open Google Analytics → Reports → Realtime</li>
+        <li>You should see this page listed under "Active users"</li>
+        <li>Click the button below to send a manual event</li>
+        <li>Check Realtime → Events for "manual_button_click"</li>
+    </ol>
+
+    <h2>Test Actions:</h2>
+    <button onclick="sendTestEvent()">Send Test Event</button>
+    <button onclick="sendPageView()">Send Page View</button>
+    <button onclick="checkDataLayer()">Check DataLayer</button>
+
+    <div id="status"></div>
+
+    <script>
+      function sendTestEvent() {
+        if (typeof gtag === 'function') {
+          gtag('event', 'manual_button_click', {
+            'event_category': 'engagement',
+            'event_label': 'test_button',
+            'value': 1
+          });
+          showStatus('✓ Test event sent! Check GA Realtime → Events', 'success');
+          console.log('Manual test event sent');
+        } else {
+          showStatus('✗ gtag is not loaded!', 'warning');
+        }
+      }
+
+      function sendPageView() {
+        if (typeof gtag === 'function') {
+          gtag('event', 'page_view', {
+            'page_title': 'Manual Page View Test',
+            'page_location': window.location.href
+          });
+          showStatus('✓ Page view sent!', 'success');
+          console.log('Manual page view sent');
+        } else {
+          showStatus('✗ gtag is not loaded!', 'warning');
+        }
+      }
+
+      function checkDataLayer() {
+        console.log('=== DataLayer Contents ===');
+        console.log(window.dataLayer);
+        showStatus('DataLayer has ' + window.dataLayer.length + ' items. Check console for details.', 'success');
+      }
+
+      function showStatus(message, type) {
+        const statusDiv = document.getElementById('status');
+        statusDiv.className = 'status ' + type;
+        statusDiv.textContent = message;
+      }
+
+      // Auto-check after 5 seconds
+      setTimeout(function() {
+        if (typeof gtag === 'function') {
+          showStatus('✓ Google Analytics is loaded and working!', 'success');
+        } else {
+          showStatus('✗ Google Analytics failed to load', 'warning');
+        }
+      }, 5000);
+    </script>
+
+    <h2>What to Look For in GA:</h2>
+    <ul>
+        <li><strong>Realtime → Overview:</strong> Should show 1 active user (you)</li>
+        <li><strong>Realtime → Events:</strong> Should show page_view, test_event_1, and any button clicks</li>
+        <li><strong>Realtime → Pages:</strong> Should show /test-ga.html</li>
+    </ul>
+
+    <div class="info">
+        <strong>Troubleshooting:</strong><br>
+        - Make sure you're not using an ad blocker<br>
+        - Try in an Incognito/Private window<br>
+        - Check that the Data Stream is configured for retirefree.app<br>
+        - Verify "Enhanced measurement" is turned ON in GA<br>
+        - Make sure the measurement ID matches in GA Admin → Data Streams
+    </div>
 </body>
 </html>
