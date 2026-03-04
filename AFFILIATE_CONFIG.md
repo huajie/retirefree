@@ -12,8 +12,22 @@
 - **Target Programs:** LegalZoom, H&R Block, TaxAct
 
 ## CJ Affiliate (Commission Junction)
-- **Status:** Not yet applied
-- **Target Programs:** TurboTax, Intuit products
+- **Status:** Active ✅
+- **Website ID:** 101697105
+- **API Key:** Configured in affiliate-master
+- **Current Advertisers:**
+  - Oedro (Cars & Trucks) - 5% commission - NOT RELEVANT for RetireFree
+- **Target Finance Advertisers:** (Applications pending)
+  - Personal Capital/Empower - $100-150/lead
+  - NerdWallet - $15-50/conversion
+  - Quicken - 15-25% of sale
+  - TurboTax/Intuit - $15-30/return
+  - AARP - $5-15/membership
+  - Credit Karma - $20-40/signup
+  - Betterment - $75-150/account
+  - Wealthfront - $100-200/account
+- **Application Guide:** See CJ_FINANCE_ADVERTISERS_GUIDE.md
+- **Next Action:** Apply to top 3 advertisers (Personal Capital, NerdWallet, Quicken)
 
 ## Other Networks
 - **Impact:** Researching

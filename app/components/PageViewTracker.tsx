@@ -20,8 +20,15 @@ export function PageViewTracker() {
       const { data } = await supabase.auth.getUser()
       const userId = data.user?.id
 
-      // Track the page view
+      // Track the page view in Supabase
       await trackPageView(window.location.href, userId)
+
+      // Track page view in Google Analytics
+      if (typeof window !== 'undefined' && (window as any).gtag) {
+        (window as any).gtag('config', 'G-WRFN778Y9W', {
+          page_path: pathname,
+        })
+      }
     }
 
     trackView()
