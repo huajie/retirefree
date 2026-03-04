@@ -1,43 +1,35 @@
 'use client'
 
 import { useEffect } from 'react'
-import Script from 'next/script'
 
 const GA_MEASUREMENT_ID = 'G-WRFN778Y9W'
 
 export function GoogleAnalytics() {
   useEffect(() => {
-    // Send pageview when component mounts
-    if (typeof window !== 'undefined' && (window as any).gtag) {
-      console.log('Sending pageview to GA')
-      ;(window as any).gtag('event', 'page_view', {
+    // Load gtag.js script
+    const script = document.createElement('script')
+    script.src = `https://www.googletagmanager.com/gtag/js?id=${GA_MEASUREMENT_ID}`
+    script.async = true
+    document.head.appendChild(script)
+
+    // Initialize gtag after script loads
+    script.onload = () => {
+      // Initialize dataLayer
+      (window as any).dataLayer = (window as any).dataLayer || []
+      function gtag(...args: any[]) {
+        ;(window as any).dataLayer.push(args)
+      }
+      (window as any).gtag = gtag
+
+      // Configure GA
+      gtag('js', new Date())
+      gtag('config', GA_MEASUREMENT_ID, {
         page_path: window.location.pathname,
-        page_title: document.title,
       })
+
+      console.log('✅ GA initialized:', GA_MEASUREMENT_ID)
     }
   }, [])
 
-  return (
-    <>
-      <Script
-        strategy="afterInteractive"
-        src={`https://www.googletagmanager.com/gtag/js?id=${GA_MEASUREMENT_ID}`}
-      />
-      <Script
-        id="google-analytics"
-        strategy="afterInteractive"
-        dangerouslySetInnerHTML={{
-          __html: `
-            window.dataLayer = window.dataLayer || [];
-            function gtag(){dataLayer.push(arguments);}
-            gtag('js', new Date());
-            gtag('config', '${GA_MEASUREMENT_ID}', {
-              page_path: window.location.pathname,
-            });
-            console.log('GA initialized:', '${GA_MEASUREMENT_ID}');
-          `,
-        }}
-      />
-    </>
-  )
+  return null
 }
