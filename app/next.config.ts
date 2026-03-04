@@ -8,7 +8,7 @@ const nextConfig: NextConfig = {
         headers: [
           {
             key: 'Content-Security-Policy',
-            value: "default-src 'self'; script-src 'self' 'unsafe-eval' 'unsafe-inline' plaid.com cdn.plaid.com *.vercel-scripts.com vercel.live; connect-src 'self' *.supabase.co plaid.com *.plaid.com; style-src 'self' 'unsafe-inline'; img-src 'self' data: https:; font-src 'self' data:; frame-src 'self' plaid.com cdn.plaid.com;"
+            value: "default-src 'self'; script-src 'self' 'unsafe-eval' 'unsafe-inline' plaid.com cdn.plaid.com *.vercel-scripts.com vercel.live *.googletagmanager.com *.google-analytics.com; connect-src 'self' *.supabase.co plaid.com *.plaid.com *.google-analytics.com *.analytics.google.com *.googletagmanager.com; style-src 'self' 'unsafe-inline'; img-src 'self' data: https:; font-src 'self' data:; frame-src 'self' plaid.com cdn.plaid.com;"
           },
           {
             key: 'X-Frame-Options',
