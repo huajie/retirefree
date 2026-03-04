@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GA Test</title>
+
+    <!-- Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-WRFN778Y9W"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-WRFN778Y9W', {
+        'debug_mode': true,
+        'send_page_view': true
+      });
+
+      console.log('GA Test Page Loaded');
+      console.log('gtag function:', typeof gtag);
+      console.log('dataLayer:', window.dataLayer);
+
+      // Send a test event
+      setTimeout(function() {
+        gtag('event', 'test_event', {
+          'event_category': 'test',
+          'event_label': 'manual_test',
+          'value': 1
+        });
+        console.log('Test event sent');
+      }, 2000);
+    </script>
+</head>
+<body>
+    <h1>Google Analytics Test Page</h1>
+    <p>Property ID: 526700510</p>
+    <p>Measurement ID: G-WRFN778Y9W</p>
+    <p>Open the browser console to see GA debug information.</p>
+    <p>Check Google Analytics Real-time reports to see if this page shows up.</p>
+
+    <button onclick="gtag('event', 'button_click', {'event_category': 'engagement', 'event_label': 'test_button'});">
+        Click Me to Send Event
+    </button>
+</body>
+</html>
