@@ -59,10 +59,8 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <head>
-        <GoogleAnalyticsScripts />
-      </head>
       <body className="antialiased">
+        <GoogleAnalyticsScripts />
         <PageViewTracker />
         <Header />
         {children}
