@@ -9,6 +9,30 @@ export const metadata: Metadata = {
 
 const blogPosts = [
   {
+    slug: 'healthcare-costs-retirement-2026',
+    title: 'Healthcare Costs in Retirement 2026: The $661,812 Reality Check',
+    excerpt: 'Healthcare inflation is outpacing Social Security by 2.4x in 2026. Learn how a 65-year-old couple needs $661,812 for retirement healthcare and strategies to prepare.',
+    date: 'March 6, 2026',
+    readTime: '12 min read',
+    category: 'Healthcare & Planning'
+  },
+  {
+    slug: 'secure-2-catch-up-contributions-2026',
+    title: 'SECURE 2.0 Catch-Up Contributions 2026: The $11,250 Roth Mandate Explained',
+    excerpt: 'Starting January 1, 2026: High earners ($150K+) must make catch-up contributions to Roth 401(k). Plus new $11,250 super catch-up for ages 60-63. Complete guide with examples.',
+    date: 'March 6, 2026',
+    readTime: '11 min read',
+    category: 'Tax Planning & Legislation'
+  },
+  {
+    slug: 'maximize-social-security-benefits-2026',
+    title: 'How to Maximize Social Security Benefits in 2026: The $418,560 Decision',
+    excerpt: 'Delaying Social Security from 62 to 70 can add $418,560 in lifetime benefits. Learn the strategies married couples use to maximize spousal and survivor benefits.',
+    date: 'March 6, 2026',
+    readTime: '14 min read',
+    category: 'Social Security'
+  },
+  {
     slug: 'social-security-cola-2026-medicare',
     title: 'Social Security COLA 2026: How Medicare Premiums Could Steal Your Raise',
     excerpt: 'The 2.8% Social Security COLA sounds great—until you see the 9.7% Medicare Part B premium increase. Here\'s what retirees actually keep and how to protect your income.',
